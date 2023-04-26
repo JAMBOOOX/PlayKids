@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/> 
+    <meta name="Juego_de_las_sumas" content="Aqui podrás aprender a sumar mientras te diviertes descrubriendo"/>
+    <meta name="keywords" content="niños, diversión, sumas, juego, jugando, videos, restas, figuras, letras, huesos, formas"/>
+    <title>¡¡A sumar!!</title>
+    <link href="Estilos_juegos.css" rel="stylesheet"> 
+  
+  </head>
+
+  <body>
+  <h1>JUEGO DE LAS SUMAS.</h1>
+  <h4>Vamossss, se que quieres ver ese video.</h4>
+
+  <button id="boton-inicio" onclick="iniciarjuego()" >A SUMAR!</button>
+  <div id="operacionsuma" ></div>
+  <div id="div-respuesta">
+ <form id="formulario" style="display: none;" >
+        <label for="respuesta"></label>
+        <input type="number" id="respuesta" name="respuesta" placeholder="RESPUESTA:" required>
+        <button type="submit">Confirmar</button>
+    </form>
+  </div>
+ 
+
+ <script>    
+var resultado;
+
+document.getElementById("boton-inicio").onclick=iniciarjuego
+document.getElementById("div-respuesta").style.display = "block";
+document.getElementById("formulario").addEventListener("submit",verificarRespuesta);
+
+function iniciarjuego(){
+alert("Bienvenido a sumando en la Unimonserrate.")
+var NUM1 = Math.floor(Math.random()*20) + 1;
+var NUM2 = Math.floor(Math.random()*20) + 1;
+resultado = NUM1+NUM2;
+document.getElementById("operacionsuma").innerHTML=  NUM1 + "+" + NUM2 + "= ???";
+document.getElementById("formulario").style.display="block";
+}
+function verificarRespuesta(){
+    event.preventDefault();    
+var respuesta = document.getElementById("respuesta").value;
+if(parseInt(respuesta) == resultado){
+    alert("¡Felicidades, eso es correcto!");
+    ganador();
+} else{
+    alert("Lo siento mucho, eso es incorrecto...");
+    event.target.reset();
+}
+}
+function ganador(){
+    
+    var enlaces =[
+    'https://www.youtube.com/watch?v=AHoEL5VFML0',
+    'https://www.youtube.com/watch?v=zcKqEf1hPEk',
+    'https://www.youtube.com/watch?v=yS8gUJsLJ5A',
+];
+var orden = Math.floor(Math.random()* enlaces.length);
+var aleatorios = enlaces[orden];
+console.log("Redireccionando a: " + aleatorios);
+window.location.href = aleatorios;
+
+}
+
+ </script>
+<!-- FINALIZA  EL JAVASCRIPT --> 
+
+
+
+
+
+  </body>
+
+
+
+  </html>
